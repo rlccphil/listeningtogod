@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening to God — Shepherding the Shepherds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   CSS VARIABLES & RESET
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --deep-blue:    #1e2a38;
+  --forest-dark:  #1c2e22;
+  --forest:       #2d4a35;
+  --forest-light: #3d6447;
+  --sage:         #7a9e82;
+  --gold:         #b8975a;
+  --gold-light:   #d4b07a;
+  --gold-pale:    #e8d5b0;
+  --beige:        #f2ead8;
+  --parchment:    #faf6ee;
+  --warm-white:   #fdfaf4;
+  --text-dark:    #1a1a1a;
+  --text-mid:     #3a3a3a;
+  --text-muted:   #6b6b6b;
+  --overlay-dark: rgba(18,26,20,0.72);
+  --overlay-mid:  rgba(18,26,20,0.45);
+  --serif:        'Cormorant Garamond', Georgia, serif;
+  --fell:         'IM Fell English', serif;
+  --sans:         'Jost', 'Helvetica Neue', sans-serif;
+  --transition:   0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--forest-dark);
+  color: var(--warm-white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 300; line-height: 1.2; }
+
+.fell { font-family: var(--fell); }
+
+.scripture {
+  font-family: var(--fell);
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  border-left: 2px solid var(--gold);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(184,151,90,0.07);
+  border-radius: 0 6px 6px 0;
+}
+
+.scripture cite {
+  display: block;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--gold);
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+blockquote {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--gold-pale);
+  border-left: 2px solid var(--gold);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(184,151,90,0.06);
+  border-radius: 0 6px 6px 0;
+}
+
+blockquote cite {
+  display: block;
+  font-size: 0.82rem;
+  font-style: normal;
+  font-family: var(--sans);
+  color: var(--gold);
+  margin-top: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+p { margin-bottom: 1rem; color: rgba(253,250,244,0.88); }
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--forest-dark); }
+::-webkit-scrollbar-thumb { background: var(--forest-light); border-radius: 3px; }
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(18,26,20,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,151,90,0.18);
+  transition: var(--transition);
+}
+
+.nav-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.nav-brand span { color: var(--sage); font-size: 0.8rem; display: block; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--sans); }
+
+.nav-links {
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+
+.nav-links::-webkit-scrollbar { display: none; }
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: rgba(253,250,244,0.6);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  color: var(--gold-light);
+  background: rgba(184,151,90,0.12);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--gold-light);
+  transition: var(--transition);
+}
+
+/* ============================================================
+   MOBILE NAV DRAWER
+============================================================ */
+#mobile-nav {
+  display: none;
+  position: fixed;
+  top: 58px; left: 0; right: 0; bottom: 0;
+  background: rgba(15,22,17,0.97);
+  z-index: 999;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+#mobile-nav.open { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.mob-btn {
+  background: none;
+  border: none;
+  color: rgba(253,250,244,0.75);
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid rgba(184,151,90,0.12);
+  transition: var(--transition);
+}
+
+.mob-btn:hover { color: var(--gold-light); }
+
+/* ============================================================
+   HERO SECTION
+============================================================ */
+#hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(var(--overlay-dark), rgba(18,26,20,0.85)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3CradialGradient id='a' cx='40%25' cy='40%25' r='60%25'%3E%3Cstop offset='0' stop-color='%232d4a35'/%3E%3Cstop offset='1' stop-color='%230e1710'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='600'/%3E%3C/svg%3E") center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,74,53,0.35) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.4; transform: translate(-50%,-50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%,-50%) scale(1.1); }
+}
+
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--warm-white);
+  margin-bottom: 1rem;
+  animation: fadeUp 1s ease 0.5s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold-pale);
+  margin-bottom: 2.5rem;
+  animation: fadeUp 1s ease 0.7s both;
+}
+
+.hero-scripture {
+  max-width: 520px;
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(232,213,176,0.82);
+  line-height: 1.9;
+  margin-bottom: 3rem;
+  animation: fadeUp 1s ease 0.9s both;
+}
+
+.hero-scripture cite {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.5rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: var(--transition);
+  animation: fadeUp 1s ease 1.1s both;
+}
+
+.hero-cta:hover {
+  background: rgba(184,151,90,0.15);
+  border-color: var(--gold-light);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sage);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: bounce 2s ease infinite;
+}
+
+.scroll-indicator::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--sage), transparent);
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   MAIN CONTENT AREA
+============================================================ */
+#content {
+  background: var(--parchment);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   SECTION LAYOUT
+============================================================ */
+.section-panel {
+  display: none;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  animation: panelIn 0.5s ease both;
+}
+
+.section-panel.active { display: block; }
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.7rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--forest-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.section-divider {
+  width: 60px;
+  height: 1.5px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 1.2rem 0 2rem;
+}
+
+.section-intro {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   TEACHING BLOCKS
+============================================================ */
+.teaching-block {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--sage);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+.teaching-block h3 {
+  font-size: 1.4rem;
+  color: var(--forest-dark);
+  margin-bottom: 0.8rem;
+}
+
+.teaching-block p { color: var(--text-mid); }
+
+/* ============================================================
+   COLLAPSIBLE PANELS
+============================================================ */
+.collapsible {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background var(--transition);
+  font-family: var(--sans);
+}
+
+.collapsible-header:hover { background: rgba(45,74,53,0.04); }
+
+.collapsible-header h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--forest-dark);
+  font-weight: 400;
+}
+
+.collapsible-icon {
+  color: var(--sage);
+  font-size: 1.2rem;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.collapsible.open .collapsible-icon { transform: rotate(45deg); }
+
+.collapsible-body {
+  display: none;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.collapsible.open .collapsible-body { display: block; }
+
+/* ============================================================
+   REFLECTION PROMPTS
+============================================================ */
+.reflection-card {
+  background: linear-gradient(135deg, #f0ebe0, #faf6ee);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--gold);
+  position: relative;
+}
+
+.reflection-card::before {
+  content: '✦';
+  position: absolute;
+  top: 1rem; right: 1.2rem;
+  color: var(--gold-pale);
+  font-size: 1.2rem;
+}
+
+.reflection-card h4 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.reflection-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reflection-card ul li {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(184,151,90,0.15);
+}
+
+.reflection-card ul li:last-child { border-bottom: none; }
+
+.reflection-card ul li::before {
+  content: '— ';
+  color: var(--gold);
+}
+
+/* ============================================================
+   SILENCE TIMER
+============================================================ */
+.silence-widget {
+  background: var(--forest-dark);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.silence-widget::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(45,74,53,0.6), transparent 70%);
+}
+
+.silence-widget * { position: relative; }
+
+.silence-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+}
+
+.silence-time {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  color: var(--warm-white);
+  margin-bottom: 1rem;
+}
+
+.silence-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid rgba(184,151,90,0.3);
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.silence-ring svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.silence-ring svg circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1s linear;
+  stroke-linecap: round;
+}
+
+.silence-ring-inner {
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: rgba(184,151,90,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.silence-controls { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+
+.silence-btn {
+  background: rgba(184,151,90,0.15);
+  border: 1px solid rgba(184,151,90,0.4);
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.silence-btn:hover { background: rgba(184,151,90,0.25); }
+
+.duration-btns { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+
+.dur-btn {
+  background: none;
+  border: 1px solid rgba(253,250,244,0.15);
+  color: rgba(253,250,244,0.5);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dur-btn.active, .dur-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* ============================================================
+   BREATH PRAYER
+============================================================ */
+.breath-widget {
+  background: linear-gradient(135deg, var(--forest-dark), #0e1710);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,74,53,0.8), rgba(29,46,34,0.4));
+  border: 1px solid rgba(122,158,130,0.3);
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold-pale);
+  transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+  cursor: pointer;
+}
+
+.breath-circle.inhale {
+  transform: scale(1.3);
+  box-shadow: 0 0 40px rgba(122,158,130,0.3);
+}
+
+.breath-circle.exhale {
+  transform: scale(0.9);
+  box-shadow: 0 0 10px rgba(122,158,130,0.1);
+}
+
+.breath-text {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--warm-white);
+  margin-bottom: 0.5rem;
+}
+
+.breath-subtext {
+  font-family: var(--fell);
+  font-style: italic;
+  color: var(--gold-pale);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.breath-instruction {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* ============================================================
+   EMOTIONAL CHECK-IN
+============================================================ */
+.emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.emotion-chip {
+  background: white;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+
+.emotion-chip:hover { border-color: var(--sage); color: var(--forest); }
+.emotion-chip.selected { border-color: var(--forest); background: rgba(45,74,53,0.08); color: var(--forest); }
+
+.emotion-chip .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+
+.emotion-response {
+  background: linear-gradient(135deg, #f0ebe0, #faf6ee);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  display: none;
+  border-left: 3px solid var(--gold);
+}
+
+.emotion-response.show { display: block; }
+
+/* ============================================================
+   EXAMEN FLOW
+============================================================ */
+.examen-step {
+  display: none;
+  animation: panelIn 0.5s ease both;
+}
+
+.examen-step.active { display: block; }
+
+.examen-progress {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+}
+
+.examen-dot {
+  flex: 1;
+  height: 3px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  transition: background 0.5s ease;
+}
+
+.examen-dot.done { background: var(--forest); }
+.examen-dot.current { background: var(--gold); }
+
+.examen-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+}
+
+.examen-number {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+}
+
+.examen-card h3 {
+  font-size: 1.8rem;
+  color: var(--forest-dark);
+  margin-bottom: 1rem;
+}
+
+.examen-nav { display: flex; gap: 1rem; justify-content: space-between; align-items: center; }
+
+.btn-primary {
+  background: var(--forest);
+  color: var(--warm-white);
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary:hover { background: var(--forest-light); }
+
+.btn-ghost {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  color: var(--text-muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-ghost:hover { border-color: var(--sage); color: var(--forest); }
+
+/* ============================================================
+   JOURNALING
+============================================================ */
+.journal-area {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.journal-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.8rem;
+}
+
+.journal-prompt {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+}
+
+.journal-textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  resize: vertical;
+  transition: border-color var(--transition);
+  background: var(--warm-white);
+}
+
+.journal-textarea:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+.journal-textarea::placeholder {
+  color: rgba(0,0,0,0.2);
+  font-style: italic;
+}
+
+.journal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.word-count {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.journal-btns { display: flex; gap: 0.5rem; }
+
+.btn-save {
+  background: rgba(45,74,53,0.1);
+  border: 1px solid rgba(45,74,53,0.3);
+  color: var(--forest);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-save:hover { background: rgba(45,74,53,0.18); }
+.btn-save.saved { background: var(--forest); color: white; }
+
+.btn-email {
+  background: rgba(184,151,90,0.1);
+  border: 1px solid rgba(184,151,90,0.4);
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-email:hover { background: rgba(184,151,90,0.18); }
+
+/* ============================================================
+   MAIN JOURNALING SPACE
+============================================================ */
+.journal-main-card {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  margin: 2rem 0;
+}
+
+.journal-main-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--forest-dark);
+  margin-bottom: 0.3rem;
+}
+
+.journal-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 0.5rem;
+}
+
+.jtab {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.jtab.active, .jtab:hover {
+  color: var(--forest);
+  border-bottom-color: var(--sage);
+}
+
+.jtab-panel { display: none; }
+.jtab-panel.active { display: block; }
+
+/* ============================================================
+   EMAIL MODAL
+============================================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,22,17,0.85);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--parchment);
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 540px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: modalIn 0.35s ease both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal h3 {
+  font-size: 1.6rem;
+  color: var(--forest-dark);
+  margin-bottom: 0.3rem;
+}
+
+.modal-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  font-family: var(--sans);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--text-dark);
+  background: white;
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+.form-group textarea { min-height: 140px; resize: vertical; line-height: 1.7; }
+
+.modal-actions { display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1.5rem; }
+
+.btn-modal-cancel {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  color: var(--text-muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-modal-send {
+  background: var(--forest);
+  border: none;
+  color: white;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-modal-send:hover { background: var(--forest-light); }
+
+/* ============================================================
+   CONSOLATION / DESOLATION
+============================================================ */
+.con-des-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.con-card {
+  border-radius: 10px;
+  padding: 1.8rem;
+}
+
+.con-card.consolation {
+  background: linear-gradient(135deg, #e8f0e9, #f4f9f5);
+  border: 1.5px solid rgba(61,100,71,0.2);
+}
+
+.con-card.desolation {
+  background: linear-gradient(135deg, #ede8e0, #f7f3ec);
+  border: 1.5px solid rgba(184,151,90,0.25);
+}
+
+.con-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.con-card.consolation h4 { color: var(--forest); }
+.con-card.desolation h4 { color: #7a5c2e; }
+
+.con-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.con-card ul li {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  padding: 0.3rem 0;
+}
+
+.con-card ul li::before { content: '· '; color: var(--sage); }
+
+/* ============================================================
+   CLOSING PRAYER SECTION
+============================================================ */
+.prayer-section {
+  background: linear-gradient(135deg, var(--forest-dark), #0e1710);
+  color: var(--warm-white);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.prayer-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(184,151,90,0.08), transparent 65%);
+}
+
+.prayer-section * { position: relative; }
+
+.prayer-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+}
+
+.prayer-text {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 2;
+  color: var(--gold-pale);
+}
+
+.prayer-text p { color: var(--gold-pale); margin-bottom: 0.5rem; }
+
+/* ============================================================
+   CONTENT TABS ROW
+============================================================ */
+#tabs-bar {
+  background: var(--parchment);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky;
+  top: 58px;
+  z-index: 900;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.tabs-scroll {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.tabs-scroll::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 1.1rem 1.1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.tab-btn:hover { color: var(--forest); }
+.tab-btn.active { color: var(--forest-dark); border-bottom-color: var(--forest); }
+
+/* ============================================================
+   HIGHLIGHT BOX
+============================================================ */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(45,74,53,0.07), rgba(45,74,53,0.03));
+  border-radius: 8px;
+  padding: 1.5rem 1.8rem;
+  border-left: 3px solid var(--forest-light);
+  margin: 1.5rem 0;
+}
+
+.highlight-box p { color: var(--forest-dark); font-size: 1.05rem; }
+
+/* ============================================================
+   DIVIDER ORNAMENT
+============================================================ */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   PRACTICE CARD
+============================================================ */
+.practice-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: var(--transition);
+}
+
+.practice-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+.practice-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(45,74,53,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.practice-card h3 {
+  font-size: 1.2rem;
+  color: var(--forest-dark);
+  margin-bottom: 0.5rem;
+}
+
+.practice-card p { font-size: 0.92rem; color: var(--text-mid); margin: 0; }
+
+/* ============================================================
+   SAVE NOTIFICATION
+============================================================ */
+.save-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--forest-dark);
+  color: var(--warm-white);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+  z-index: 3000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.save-toast.show { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .con-des-grid { grid-template-columns: 1fr; }
+  .journal-main-card { padding: 1.5rem; }
+  .examen-card { padding: 1.5rem; }
+  .section-panel { padding: 2.5rem 1.2rem 4rem; }
+  .modal { padding: 1.8rem; }
+}
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.text-center { text-align: center; }
+
+.tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(45,74,53,0.1);
+  color: var(--forest);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  margin: 0.15rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      Listening to God
+      <span>Shepherding the Shepherds · Session 2</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn" onclick="goHero()">Home</button>
+      <button class="nav-btn" onclick="showTab('welcome')">Welcome</button>
+      <button class="nav-btn" onclick="showTab('listening')">Listening</button>
+      <button class="nav-btn" onclick="showTab('leadership')">Leadership</button>
+      <button class="nav-btn" onclick="showTab('obstacles')">Obstacles</button>
+      <button class="nav-btn" onclick="showTab('consolation')">Consolation</button>
+      <button class="nav-btn" onclick="showTab('discernment')">Discernment</button>
+      <button class="nav-btn" onclick="showTab('examen')">Examen</button>
+      <button class="nav-btn" onclick="showTab('reflection')">Reflection</button>
+      <button class="nav-btn" onclick="showTab('journal')">Journal</button>
+      <button class="nav-btn" onclick="showTab('closing')">Closing</button>
+    </div>
+    <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobile-nav">
+  <button class="mob-btn" onclick="goHero()">🏠 Home</button>
+  <button class="mob-btn" onclick="showTab('welcome')">01 · Welcome</button>
+  <button class="mob-btn" onclick="showTab('listening')">02 · Listening to God</button>
+  <button class="mob-btn" onclick="showTab('leadership')">03 · Spiritual Leadership</button>
+  <button class="mob-btn" onclick="showTab('obstacles')">04 · Obstacles to Listening</button>
+  <button class="mob-btn" onclick="showTab('consolation')">05 · Consolation & Desolation</button>
+  <button class="mob-btn" onclick="showTab('discernment')">06 · Discernment Practices</button>
+  <button class="mob-btn" onclick="showTab('examen')">07 · Daily Examen</button>
+  <button class="mob-btn" onclick="showTab('reflection')">08 · Guided Reflection</button>
+  <button class="mob-btn" onclick="showTab('journal')">09 · Journaling Space</button>
+  <button class="mob-btn" onclick="showTab('closing')">10 · Closing Prayer</button>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">DMin Virtual Retreat · Session 2</div>
+  <h1 class="hero-title"><em>Listening</em> to God</h1>
+  <div class="hero-subtitle">Emotional Awareness, Discernment, and Spiritual Leadership</div>
+  <div class="hero-scripture">
+    "Why, my soul, are you downcast?<br>
+    Why so disturbed within me?<br>
+    Put your hope in God…"
+    <cite>Psalm 42:5</cite>
+  </div>
+  <button class="hero-cta" onclick="enterRetreat()">Enter the Retreat ↓</button>
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<!-- ============================================================
+     TABS BAR
+============================================================ -->
+<div id="tabs-bar" style="display:none;">
+  <div class="tabs-scroll">
+    <button class="tab-btn" id="tab-welcome"     onclick="showTab('welcome')">01 Welcome</button>
+    <button class="tab-btn" id="tab-listening"   onclick="showTab('listening')">02 Listening</button>
+    <button class="tab-btn" id="tab-leadership"  onclick="showTab('leadership')">03 Leadership</button>
+    <button class="tab-btn" id="tab-obstacles"   onclick="showTab('obstacles')">04 Obstacles</button>
+    <button class="tab-btn" id="tab-consolation" onclick="showTab('consolation')">05 Consolation</button>
+    <button class="tab-btn" id="tab-discernment" onclick="showTab('discernment')">06 Discernment</button>
+    <button class="tab-btn" id="tab-examen"      onclick="showTab('examen')">07 Examen</button>
+    <button class="tab-btn" id="tab-reflection"  onclick="showTab('reflection')">08 Reflection</button>
+    <button class="tab-btn" id="tab-journal"     onclick="showTab('journal')">09 Journal</button>
+    <button class="tab-btn" id="tab-closing"     onclick="showTab('closing')">10 Closing</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CONTENT
+============================================================ -->
+<div id="content" style="display:none;">
+
+  <!-- ══════════════ 01 WELCOME ══════════════ -->
+  <div id="section-welcome" class="section-panel active">
+    <div class="section-eyebrow">Session 02</div>
+    <h2 class="section-title">Welcome to This Sacred Space</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">You are invited to slow down. This is not a lecture — it is a retreat. Lay aside the agenda, the answers, and the urgency. Come simply as you are.</p>
+
+    <!-- Breath Prayer -->
+    <div class="breath-widget" id="breathWidget">
+      <div class="breath-label" style="font-family:var(--sans);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem;">Breath Prayer — 1 Samuel 3:10</div>
+      <div class="breath-circle" id="breathCircle">
+        <span id="breathWord">Breathe</span>
+      </div>
+      <div class="breath-text" id="breathPhrase">Speak, Lord…</div>
+      <div class="breath-subtext" id="breathSub">Your servant is listening…</div>
+      <button class="silence-btn" id="breathBtn" onclick="startBreath()">Begin Breath Prayer</button>
+    </div>
+
+    <div class="highlight-box">
+      <p>"Many of us are trained to analyze situations, solve problems, and lead people. But spiritual leadership begins with learning how to <em>notice God.</em>"</p>
+    </div>
+
+    <div class="teaching-block">
+      <h3>The Movement of This Retreat</h3>
+      <p>This session builds naturally on the first. If the first retreat invited you into rest, this one invites you into <strong>attentiveness</strong>.</p>
+      <p>The overall movement is:</p>
+      <ul style="list-style:none;padding:0;margin-top:0.5rem;">
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 From silence → <strong>attentiveness</strong></li>
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 From exhaustion → <strong>awareness</strong></li>
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 From activity → <strong>discernment</strong></li>
+      </ul>
+    </div>
+
+    <div class="reflection-card">
+      <h4>Opening Reflection</h4>
+      <ul>
+        <li>What emotion do you notice in the psalmist of Psalm 42?</li>
+        <li>What emotion do you notice in yourself today?</li>
+        <li>What would it mean to come attentively before God in this hour?</li>
+      </ul>
+    </div>
+
+    <!-- Mini silence -->
+    <div class="silence-widget">
+      <div class="silence-label">A Moment of Opening Silence</div>
+      <div class="silence-ring" id="silRing1">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" id="silCircle1"/></svg>
+        <div class="silence-ring-inner">🕊️</div>
+      </div>
+      <div class="silence-time" id="silTime1">2:00</div>
+      <div class="duration-btns" style="margin-bottom:1rem;">
+        <button class="dur-btn active" onclick="setDuration(1,120,'silTime1','silCircle1')">2 min</button>
+        <button class="dur-btn" onclick="setDuration(1,300,'silTime1','silCircle1')">5 min</button>
+      </div>
+      <div class="silence-controls">
+        <button class="silence-btn" onclick="startTimer(1,'silTime1','silCircle1','silBtn1')">Begin</button>
+        <button class="silence-btn" onclick="resetTimer(1,'silTime1','silCircle1','silBtn1',120)" id="silBtn1-r" style="display:none;">Reset</button>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('listening')">Continue to Listening to God →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 02 LISTENING TO GOD ══════════════ -->
+  <div id="section-listening" class="section-panel">
+    <div class="section-eyebrow">Theme 1</div>
+    <h2 class="section-title">Listening to God</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">Spiritual leadership is not primarily leading <em>for</em> God, but leading <em>with</em> God. And leading with God requires the discipline of listening.</p>
+
+    <div class="scripture">
+      "Even Jesus did not minister from constant activity,<br>
+      but from continual communion."
+      <cite>— A Central Truth</cite>
+    </div>
+
+    <div class="collapsible open" id="col1">
+      <button class="collapsible-header" onclick="toggleCollapsible('col1')">
+        <h3>A. Biblical Leadership Begins with Listening</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <div class="practice-card">
+          <div class="practice-icon">📖</div>
+          <div>
+            <h3>Moses</h3>
+            <p>Before confronting Pharaoh, Moses listened. The burning bush was not a disruption — it was an invitation to hear the voice of God before acting in God's name.</p>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">👂</div>
+          <div>
+            <h3>Samuel</h3>
+            <p>"Speak, Lord, for your servant is listening." (1 Samuel 3:10) Samuel's ministry was shaped not by what he wanted to do for God, but by what he heard from God.</p>
+          </div>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">🕊️</div>
+          <div>
+            <h3>Jesus</h3>
+            <p>Jesus repeatedly withdrew to pray and listen to the Father. Even the Son of God — fully present in every teaching and miracle — rooted his ministry in communion, not merely activity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible" id="col2">
+      <button class="collapsible-header" onclick="toggleCollapsible('col2')">
+        <h3>B. Leadership Without Listening Becomes Functionalism</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>When a leader stops listening to God, something subtle but serious happens: ministry becomes <em>mechanical</em>. Without an attentive ear:</p>
+        <ul style="list-style:none;padding:0.5rem 0 0;">
+          <li style="padding:0.4rem 0;color:var(--text-mid);">🔹 We become reactive rather than responsive</li>
+          <li style="padding:0.4rem 0;color:var(--text-mid);">🔹 We lead from anxiety rather than trust</li>
+          <li style="padding:0.4rem 0;color:var(--text-mid);">🔹 We rely only on technique, not discernment</li>
+          <li style="padding:0.4rem 0;color:var(--text-mid);">🔹 Ministry becomes obligation, not communion</li>
+        </ul>
+        <blockquote>
+          "A leader who stops listening to God eventually begins listening only to pressure, expectations, and fear."
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="collapsible" id="col3">
+      <button class="collapsible-header" onclick="toggleCollapsible('col3')">
+        <h3>C. Listening Leads to True Inner Freedom</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>True spiritual leaders are distinguished not by how much they accomplish, but by the quality of their inner life. Those who listen deeply are:</p>
+        <ul style="list-style:none;padding:0.5rem 0;">
+          <li style="padding:0.4rem 0;color:var(--text-mid);">✦ Less driven by ego and the need to impress</li>
+          <li style="padding:0.4rem 0;color:var(--text-mid);">✦ Less enslaved by approval and performance</li>
+          <li style="padding:0.4rem 0;color:var(--text-mid);">✦ More surrendered to God's leading, even in uncertainty</li>
+        </ul>
+        <div class="scripture">
+          "Why, my soul, are you downcast? Why so disturbed within me? Put your hope in God, for I will yet praise him, my Savior and my God."
+          <cite>Psalm 42:5</cite>
+        </div>
+        <p>The psalmist is emotionally honest before God. This is where discernment begins — not in certainty, but in honesty.</p>
+      </div>
+    </div>
+
+    <div class="reflection-card">
+      <h4>Contemplative Pause</h4>
+      <ul>
+        <li>When did you last sense that you were truly listening to God, not just speaking?</li>
+        <li>What would change in your leadership if listening came first?</li>
+        <li>Where have you been leading from anxiety rather than communion?</li>
+      </ul>
+    </div>
+
+    <div class="journal-area">
+      <div class="journal-label">Journal — Listening</div>
+      <div class="journal-prompt">Reflect quietly: Where in your leadership do you most need to listen rather than speak?</div>
+      <textarea class="journal-textarea" id="j-listening" placeholder="Write freely… there are no wrong answers here." oninput="updateWordCount('j-listening','wc-listening')"></textarea>
+      <div class="journal-footer">
+        <span class="word-count" id="wc-listening">0 words</span>
+        <div class="journal-btns">
+          <button class="btn-save" onclick="saveJournal('j-listening','save-listening')">Save</button>
+          <button class="btn-email" onclick="openEmail('j-listening','Listening to God — Reflection')">✉ Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('leadership')">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 03 SPIRITUAL LEADERSHIP ══════════════ -->
+  <div id="section-leadership" class="section-panel">
+    <div class="section-eyebrow">Theme 2</div>
+    <h2 class="section-title">Spiritual Leadership</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">What makes a shepherd a <em>spiritual</em> shepherd? Not primarily skill, strategy, or even zeal — but attentiveness to the voice of the One who calls.</p>
+
+    <div class="highlight-box">
+      <p>"Discernment begins with honesty. The psalmist does not pretend. He brings his downcast soul, his disturbance, his questions — and lays them before God."</p>
+    </div>
+
+    <div class="teaching-block">
+      <h3>The Difference That Changes Everything</h3>
+      <p>Many pastors speak <em>about</em> God with great eloquence. Far fewer have learned to <em>walk with</em> God in the dailiness of ministry. The difference is not in knowledge — it is in attentiveness.</p>
+      <p>Spiritual leadership flows from a listening posture. It is leadership that:</p>
+      <ul style="list-style:none;padding:0.5rem 0;">
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 Waits before it acts</li>
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 Notices before it speaks</li>
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 Discerns before it decides</li>
+        <li style="padding:0.4rem 0;color:var(--text-mid);">🌿 Prays before it plans</li>
+      </ul>
+    </div>
+
+    <div class="scripture">
+      "I am the good shepherd; I know my sheep and my sheep know me — just as the Father knows me and I know the Father — and I lay down my life for the sheep."
+      <cite>John 10:14–15</cite>
+    </div>
+
+    <blockquote>
+      "The good shepherd's knowledge of the sheep flows from the shepherd's knowledge of the Father. To shepherd well, one must first listen well."
+    </blockquote>
+
+    <div class="teaching-block">
+      <h3>Holy Noticing</h3>
+      <p>Spiritual leadership requires developing the capacity to <em>notice</em> — not just with the mind but with the whole self. Three questions can orient a leader throughout the day:</p>
+      <div style="margin-top:1rem;">
+        <div style="padding:0.8rem 1rem;border-left:3px solid var(--sage);margin-bottom:0.6rem;background:rgba(45,74,53,0.04);border-radius:0 6px 6px 0;">
+          <p style="margin:0;color:var(--forest-dark);font-style:italic;">What is happening inside me right now?</p>
+        </div>
+        <div style="padding:0.8rem 1rem;border-left:3px solid var(--sage);margin-bottom:0.6rem;background:rgba(45,74,53,0.04);border-radius:0 6px 6px 0;">
+          <p style="margin:0;color:var(--forest-dark);font-style:italic;">What might God be saying through this?</p>
+        </div>
+        <div style="padding:0.8rem 1rem;border-left:3px solid var(--sage);margin-bottom:0.6rem;background:rgba(45,74,53,0.04);border-radius:0 6px 6px 0;">
+          <p style="margin:0;color:var(--forest-dark);font-style:italic;">What draws me toward love, faith, and hope?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emotional Check-in -->
+    <div style="background:white;border-radius:10px;padding:2rem;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Emotional Check-In</div>
+      <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">Before we go further — how are you, truly? Select what resonates with you right now.</p>
+      <div class="emotion-grid" id="emotionGrid">
+        <div class="emotion-chip" onclick="selectEmotion(this,'peace')"><span class="emoji">😌</span>Peace</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'tired')"><span class="emoji">😓</span>Tired</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'anxious')"><span class="emoji">😰</span>Anxious</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'hopeful')"><span class="emoji">🌤️</span>Hopeful</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'grieving')"><span class="emoji">💧</span>Grieving</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'grateful')"><span class="emoji">🙏</span>Grateful</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'numb')"><span class="emoji">😶</span>Numb</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'joy')"><span class="emoji">✨</span>Joy</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'confused')"><span class="emoji">🌀</span>Confused</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'longing')"><span class="emoji">🌙</span>Longing</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'burdened')"><span class="emoji">🪨</span>Burdened</div>
+        <div class="emotion-chip" onclick="selectEmotion(this,'open')"><span class="emoji">🌿</span>Open</div>
+      </div>
+      <div class="emotion-response" id="emotionResponse">
+        <div class="journal-label" id="emotionLabel"></div>
+        <p id="emotionText" style="color:var(--text-mid);font-style:italic;margin:0;"></p>
+      </div>
+    </div>
+
+    <div class="reflection-card">
+      <h4>Reflection</h4>
+      <ul>
+        <li>What does "leading with God" look like in your specific context?</li>
+        <li>In what ways has busyness quietly replaced attentiveness in your ministry?</li>
+        <li>What would a more prayerful, noticing posture cost you? What would it give?</li>
+      </ul>
+    </div>
+
+    <div class="journal-area">
+      <div class="journal-label">Journal — Leadership</div>
+      <div class="journal-prompt">Where do you most need to shift from leading <em>for</em> God to leading <em>with</em> God?</div>
+      <textarea class="journal-textarea" id="j-leadership" placeholder="Write from the heart…" oninput="updateWordCount('j-leadership','wc-leadership')"></textarea>
+      <div class="journal-footer">
+        <span class="word-count" id="wc-leadership">0 words</span>
+        <div class="journal-btns">
+          <button class="btn-save" onclick="saveJournal('j-leadership','save-leadership')">Save</button>
+          <button class="btn-email" onclick="openEmail('j-leadership','Spiritual Leadership — Reflection')">✉ Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('obstacles')">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 04 OBSTACLES ══════════════ -->
+  <div id="section-obstacles" class="section-panel">
+    <div class="section-eyebrow">Theme 3</div>
+    <h2 class="section-title">Obstacles to Listening</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">Many leaders genuinely want to hear God — but subtle forces work against a listening posture. Naming them honestly is itself an act of spiritual courage.</p>
+
+    <div class="collapsible open" id="obs1">
+      <button class="collapsible-header" onclick="toggleCollapsible('obs1')">
+        <h3>🌊 A. Noise and Distraction</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>The obstacle is not primarily external — it is the internal noise that accumulates from constant information, hurry, and the addiction to productivity.</p>
+        <blockquote>
+          "God's first language is silence."
+          <cite>— Thomas Keating</cite>
+        </blockquote>
+        <p>We have become fluent in a second language — noise, speed, output — and have grown awkward in the mother tongue of God.</p>
+      </div>
+    </div>
+
+    <div class="collapsible" id="obs2">
+      <button class="collapsible-header" onclick="toggleCollapsible('obs2')">
+        <h3>💧 B. Unprocessed Emotions</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>Many leaders — especially those trained in ministry — have learned to suppress what they feel. Grief, anger, fear, and disappointment are pushed down in order to continue functioning.</p>
+        <div class="highlight-box">
+          <p>But ignored emotions do not disappear. They continue to shape how we lead, react, make decisions, and relate to those in our care.</p>
+        </div>
+        <p>Psalm 42 offers a different way: the psalmist does not silence his emotions before God — he brings them, names them, and holds them in the presence of God. This is the beginning of listening.</p>
+        <div class="scripture">
+          "Why, my soul, are you downcast? Why so disturbed within me?"
+          <cite>Psalm 42:5a</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible" id="obs3">
+      <button class="collapsible-header" onclick="toggleCollapsible('obs3')">
+        <h3>👑 C. Ego and Control</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>Sometimes we do not listen because, somewhere beneath the surface, we have already decided. We want confirmation, not revelation. We seek permission, not direction.</p>
+        <p>Listening to God requires something threatening to leadership identity: <em>relinquishing control.</em></p>
+        <blockquote>
+          "Listening requires relinquishing control. The one who must always know what God is saying has likely stopped truly listening."
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="collapsible" id="obs4">
+      <button class="collapsible-header" onclick="toggleCollapsible('obs4')">
+        <h3>🏃 D. Ministry Identity and Performance</h3>
+        <span class="collapsible-icon">+</span>
+      </button>
+      <div class="collapsible-body">
+        <p>Some leaders fear silence because productivity <em>validates</em> their identity. To be still is to be unproductive. To be unproductive is to be unworthy.</p>
+        <div class="highlight-box">
+          <p>But God's love is not earned through ministry performance. Silence does not expose emptiness — it often reveals the fullness of a Presence we have been too busy to notice.</p>
+        </div>
+        <p>The invitation of this retreat is to return to belovedness — to remember that you are a beloved child before you are a capable leader.</p>
+      </div>
+    </div>
+
+    <!-- Silence Timer -->
+    <div class="silence-widget" style="margin-top:2rem;">
+      <div class="silence-label">Contemplative Pause — Sit with What You've Named</div>
+      <div class="silence-ring" id="silRing2">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" id="silCircle2"/></svg>
+        <div class="silence-ring-inner">🌿</div>
+      </div>
+      <div class="silence-time" id="silTime2">3:00</div>
+      <div class="duration-btns" style="margin-bottom:1rem;">
+        <button class="dur-btn active" onclick="setDuration(2,180,'silTime2','silCircle2')">3 min</button>
+        <button class="dur-btn" onclick="setDuration(2,300,'silTime2','silCircle2')">5 min</button>
+      </div>
+      <div class="silence-controls">
+        <button class="silence-btn" onclick="startTimer(2,'silTime2','silCircle2','silBtn2')">Begin Silence</button>
+        <button class="silence-btn" onclick="resetTimer(2,'silTime2','silCircle2','silBtn2',180)" id="silBtn2-r" style="display:none;">Reset</button>
+      </div>
+    </div>
+
+    <div class="reflection-card">
+      <h4>Honest Reflection</h4>
+      <ul>
+        <li>Which obstacle resonates most with your experience right now?</li>
+        <li>What emotion are you aware of in this moment that you have been carrying quietly?</li>
+        <li>What would it mean to bring this honestly before God, as the psalmist did?</li>
+      </ul>
+    </div>
+
+    <div class="journal-area">
+      <div class="journal-label">Journal — Obstacles</div>
+      <div class="journal-prompt">Name one obstacle that most affects your ability to listen to God. Bring it before Him honestly.</div>
+      <textarea class="journal-textarea" id="j-obstacles" placeholder="Be honest. This is a safe space…" oninput="updateWordCount('j-obstacles','wc-obstacles')"></textarea>
+      <div class="journal-footer">
+        <span class="word-count" id="wc-obstacles">0 words</span>
+        <div class="journal-btns">
+          <button class="btn-save" onclick="saveJournal('j-obstacles','save-obstacles')">Save</button>
+          <button class="btn-email" onclick="openEmail('j-obstacles','Obstacles to Listening — Reflection')">✉ Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('consolation')">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 05 CONSOLATION & DESOLATION ══════════════ -->
+  <div id="section-consolation" class="section-panel">
+    <div class="section-eyebrow">Ignatian Spirituality</div>
+    <h2 class="section-title">Consolation & Desolation</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">Ignatius of Loyola — not as a theological system, but as a gift to the soul — gave us language for what the heart already knows: that God is active in our inner movements.</p>
+
+    <div class="teaching-block">
+      <h3>What Ignatius Observed</h3>
+      <p>After his wounding at Pamplona, Ignatius had time to reflect. He noticed something: certain thoughts and imaginings left him restless and dry. Others left him with a deep, quiet peace.</p>
+      <p>From this, he developed a vocabulary for the spiritual life — one that helps us notice not just what we think, but <em>how</em> the Spirit moves within us.</p>
+    </div>
+
+    <div class="con-des-grid">
+      <div class="con-card consolation">
+        <h4>✦ Consolation</h4>
+        <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:0.8rem;">Where recently have you sensed…</p>
+        <ul>
+          <li>Life and energy</li>
+          <li>Deep peace</li>
+          <li>Joy or gratitude</li>
+          <li>Deepened faith</li>
+          <li>Draw toward God</li>
+          <li>Clarity and hope</li>
+        </ul>
+      </div>
+      <div class="con-card desolation">
+        <h4>🌑 Desolation</h4>
+        <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:0.8rem;">Where recently have you sensed…</p>
+        <ul>
+          <li>Heaviness or dryness</li>
+          <li>Confusion or fog</li>
+          <li>Discouragement</li>
+          <li>Spiritual emptiness</li>
+          <li>Pull away from God</li>
+          <li>Restlessness or fear</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>Ignatius was not teaching mysticism — he was teaching <em>attentiveness</em>. Both consolation and desolation are invitations: one to receive gratefully, the other to notice and bring honestly to God.</p>
+    </div>
+
+    <div class="teaching-block">
+      <h3>Important Caution</h3>
+      <p>Consolation is not the same as comfort, and desolation is not the same as sin. A leader in desolation is not abandoned. God is often most present in what feels most dry.</p>
+      <blockquote>
+        "In times of desolation, one should never make a change, but rather hold firm."
+        <cite>— Ignatius of Loyola</cite>
+      </blockquote>
+    </div>
+
+    <!-- Discernment Practice -->
+    <div style="background:white;border-radius:10px;padding:2rem;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Guided Practice — Noticing the Movements of the Heart</div>
+      <p style="color:var(--text-mid);font-style:italic;margin-bottom:1.2rem;">Take 2–3 minutes with each question. Let answers arise slowly, without forcing.</p>
+      
+      <div class="reflection-card" style="margin-bottom:1rem;">
+        <h4>Consolation — Where have I sensed life?</h4>
+        <textarea class="journal-textarea" id="j-consolation" placeholder="A recent moment, conversation, Scripture, or experience where you sensed God's presence…" oninput="updateWordCount('j-consolation','wc-consolation')"></textarea>
+        <div class="journal-footer"><span class="word-count" id="wc-consolation">0 words</span></div>
+      </div>
+
+      <div class="reflection-card">
+        <h4>Desolation — Where have I sensed dryness or heaviness?</h4>
+        <textarea class="journal-textarea" id="j-desolation" placeholder="A recent area of ministry, relationship, or inner life where you've sensed distance or difficulty…" oninput="updateWordCount('j-desolation','wc-desolation')"></textarea>
+        <div class="journal-footer"><span class="word-count" id="wc-desolation">0 words</span></div>
+      </div>
+
+      <div style="margin-top:1.5rem;text-align:right;">
+        <button class="btn-email" onclick="openEmailCombined(['j-consolation','j-desolation'],['Consolation','Desolation'],'Consolation &amp; Desolation — Reflection')">✉ Email Both Reflections</button>
+      </div>
+    </div>
+
+    <div class="scripture">
+      "Search me, O God, and know my heart; try me and know my anxious thoughts."
+      <cite>Psalm 139:23</cite>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('discernment')">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 06 DISCERNMENT PRACTICES ══════════════ -->
+  <div id="section-discernment" class="section-panel">
+    <div class="section-eyebrow">Theme 4</div>
+    <h2 class="section-title">Discernment Practices</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">Discernment is not a technique — it is a disposition. It is the cultivated art of recognizing God's movements in ordinary life, in Scripture, in people, in silence.</p>
+
+    <blockquote>
+      "Discernment is learning to pay attention to God's activity in ordinary life."
+    </blockquote>
+
+    <div class="practice-card">
+      <div class="practice-icon">👁️</div>
+      <div>
+        <h3>Finding God in All Things</h3>
+        <p>Ignatius believed God is not confined to church services, sermons, or spiritual disciplines. He is active in conversations, interruptions, suffering, desires, relationships, and ministry tensions. The question is not "Where is God?" but "Will I notice?"</p>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-icon">🌱</div>
+      <div>
+        <h3>Noticing Inner Movements</h3>
+        <p>Before acting on a decision or impulse, pause: Does this movement lead toward love, hope, and trust? Or toward anxiety, self-protection, and control? The direction of the movement matters.</p>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-icon">🤫</div>
+      <div>
+        <h3>Silence Before Decisions</h3>
+        <p>Many decisions that seemed urgent could wait. Discerning leaders develop the practice of sitting quietly before God before responding — even for five minutes — to allow clarity to emerge.</p>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-icon">📖</div>
+      <div>
+        <h3>Lectio Divina</h3>
+        <p>Sacred reading — not studying Scripture for information, but receiving it as a word addressed to <em>you</em>, right now. Read a passage slowly three times: What word or phrase catches your attention? What does God seem to be saying to you through it?</p>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-icon">✍️</div>
+      <div>
+        <h3>Reflective Journaling</h3>
+        <p>Journaling for discernment is different from journaling as a diary. It involves asking: "What do I notice inside me? What might God be doing here?" Over time, patterns emerge that reveal how God speaks and moves in your particular soul.</p>
+      </div>
+    </div>
+
+    <!-- Discernment Exercise -->
+    <div style="background:linear-gradient(135deg,#f0ebe0,#faf6ee);border-radius:10px;padding:2rem;margin:1.5rem 0;border:1px solid rgba(184,151,90,0.2);">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Discernment Exercise — "What might God be revealing?"</div>
+      <p style="color:var(--text-mid);font-style:italic;margin-bottom:1rem;">Look at your consolation and desolation reflections from the previous section. With those in view, consider this question:</p>
+      <div class="scripture" style="margin-bottom:1.2rem;">"What might God be revealing through these inner movements in my life right now?"</div>
+      <textarea class="journal-textarea" id="j-discernment" placeholder="Sit with this for a few moments before writing…" style="background:white;" oninput="updateWordCount('j-discernment','wc-discernment')"></textarea>
+      <div class="journal-footer">
+        <span class="word-count" id="wc-discernment">0 words</span>
+        <div class="journal-btns">
+          <button class="btn-save" onclick="saveJournal('j-discernment','save-discernment')">Save</button>
+          <button class="btn-email" onclick="openEmail('j-discernment','Discernment Practice — Reflection')">✉ Email</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-card">
+      <h4>For Spiritual Conversation</h4>
+      <ul>
+        <li>What did you notice during the consolation/desolation exercise?</li>
+        <li>Where might God be inviting greater attentiveness in your leadership?</li>
+        <li>What decision or area of ministry needs a more discerning posture right now?</li>
+      </ul>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('examen')">Continue to the Examen →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 07 DAILY EXAMEN ══════════════ -->
+  <div id="section-examen" class="section-panel">
+    <div class="section-eyebrow">Ignatian Practice</div>
+    <h2 class="section-title">The Daily Examen</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">The Examen is not merely reviewing your day. It is learning to notice God's presence <em>in</em> your day — the invitations you may have missed, the graces you may have overlooked.</p>
+
+    <div class="teaching-block">
+      <h3>What the Examen Is Not</h3>
+      <p>The Examen is not a performance review. It is not a guilt exercise. It does not ask, "How well did I do?" It asks, "Where was God, and did I notice?" This shifts the posture from self-evaluation to attentive receptivity.</p>
+    </div>
+
+    <!-- Interactive Examen -->
+    <div style="background:white;border-radius:12px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.07);margin:1.5rem 0;">
+      <div class="section-eyebrow" style="margin-bottom:1.5rem;">Interactive Examen — Five Movements</div>
+
+      <div class="examen-progress">
+        <div class="examen-dot" id="ep0"></div>
+        <div class="examen-dot" id="ep1"></div>
+        <div class="examen-dot" id="ep2"></div>
+        <div class="examen-dot" id="ep3"></div>
+        <div class="examen-dot" id="ep4"></div>
+      </div>
+
+      <div class="examen-step active" id="ex0">
+        <div class="examen-card">
+          <div class="examen-number">Movement 1 of 5</div>
+          <h3>Gratitude</h3>
+          <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">Begin not with your failures or questions, but with thanks. Rest for a moment in the simple awareness that God has been present in this day.</p>
+          <div class="scripture" style="font-size:1rem;">"Give thanks to the Lord, for He is good; His love endures forever."<cite>Psalm 107:1</cite></div>
+          <textarea class="journal-textarea" id="ex-j0" placeholder="What are you grateful for in the past 24 hours? Name even the smallest grace…" oninput="updateWordCount('ex-j0','ex-wc0')"></textarea>
+          <div class="word-count" id="ex-wc0" style="margin-top:0.4rem;">0 words</div>
+        </div>
+        <div class="examen-nav">
+          <span></span>
+          <button class="btn-primary" onclick="examenNext(0)">Next Movement →</button>
+        </div>
+      </div>
+
+      <div class="examen-step" id="ex1">
+        <div class="examen-card">
+          <div class="examen-number">Movement 2 of 5</div>
+          <h3>Review the Day</h3>
+          <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">Walk slowly through your day — not to judge it, but to see it with fresh eyes. Where were the moments of grace? Where was energy given or drained?</p>
+          <textarea class="journal-textarea" id="ex-j1" placeholder="Walk through the day gently: morning, afternoon, evening. What stands out?" oninput="updateWordCount('ex-j1','ex-wc1')"></textarea>
+          <div class="word-count" id="ex-wc1" style="margin-top:0.4rem;">0 words</div>
+        </div>
+        <div class="examen-nav">
+          <button class="btn-ghost" onclick="examenPrev(1)">← Previous</button>
+          <button class="btn-primary" onclick="examenNext(1)">Next Movement →</button>
+        </div>
+      </div>
+
+      <div class="examen-step" id="ex2">
+        <div class="examen-card">
+          <div class="examen-number">Movement 3 of 5</div>
+          <h3>Notice Emotions</h3>
+          <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">What emotions were most present today? God often speaks through what we feel, not just what we think. Name them without judgment.</p>
+          <div class="highlight-box" style="margin-bottom:1.2rem;"><p>Emotions are not distractions from the spiritual life — they are often its very language.</p></div>
+          <textarea class="journal-textarea" id="ex-j2" placeholder="What emotions did you experience today? Which were strongest? Which surprised you?" oninput="updateWordCount('ex-j2','ex-wc2')"></textarea>
+          <div class="word-count" id="ex-wc2" style="margin-top:0.4rem;">0 words</div>
+        </div>
+        <div class="examen-nav">
+          <button class="btn-ghost" onclick="examenPrev(2)">← Previous</button>
+          <button class="btn-primary" onclick="examenNext(2)">Next Movement →</button>
+        </div>
+      </div>
+
+      <div class="examen-step" id="ex3">
+        <div class="examen-card">
+          <div class="examen-number">Movement 4 of 5</div>
+          <h3>Discern God's Invitations</h3>
+          <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">As you look at this day, where do you sense God has been present? What might He have been inviting you toward? What did you perhaps resist or overlook?</p>
+          <textarea class="journal-textarea" id="ex-j3" placeholder="Where did you sense God's nudges, invitations, or corrections today?" oninput="updateWordCount('ex-j3','ex-wc3')"></textarea>
+          <div class="word-count" id="ex-wc3" style="margin-top:0.4rem;">0 words</div>
+        </div>
+        <div class="examen-nav">
+          <button class="btn-ghost" onclick="examenPrev(3)">← Previous</button>
+          <button class="btn-primary" onclick="examenNext(3)">Next Movement →</button>
+        </div>
+      </div>
+
+      <div class="examen-step" id="ex4">
+        <div class="examen-card">
+          <div class="examen-number">Movement 5 of 5</div>
+          <h3>Respond in Prayer</h3>
+          <p style="color:var(--text-mid);margin-bottom:1.2rem;font-style:italic;">Close the Examen not with more reflection, but with prayer. Speak to God freely. Offer what you've noticed — your gratitude, your failures, your questions, your longings.</p>
+          <div class="scripture" style="font-size:1rem;">"And I — in righteousness I will see Your face; when I awake, I will be satisfied with seeing Your likeness."<cite>Psalm 17:15</cite></div>
+          <textarea class="journal-textarea" id="ex-j4" placeholder="Write your prayer freely. Or simply sit in silence and let the prayer be unspoken…" oninput="updateWordCount('ex-j4','ex-wc4')"></textarea>
+          <div class="word-count" id="ex-wc4" style="margin-top:0.4rem;">0 words</div>
+        </div>
+        <div class="examen-nav">
+          <button class="btn-ghost" onclick="examenPrev(4)">← Previous</button>
+          <button class="btn-primary" onclick="examenComplete()">Complete Examen ✦</button>
+        </div>
+      </div>
+
+      <div class="examen-step" id="ex-complete">
+        <div style="text-align:center;padding:2rem 0;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🕊️</div>
+          <h3 style="font-size:1.8rem;color:var(--forest-dark);margin-bottom:0.8rem;">Examen Complete</h3>
+          <p style="color:var(--text-mid);font-style:italic;margin-bottom:1.5rem;">Well done. You have brought yourself — your day, your emotions, your longings — before God. That is itself an act of trust.</p>
+          <div class="journal-btns" style="justify-content:center;">
+            <button class="btn-email" onclick="emailExamen()">✉ Email My Examen</button>
+            <button class="btn-ghost" onclick="resetExamen()">Start Over</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('reflection')">Continue to Guided Reflection →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 08 GUIDED REFLECTION ══════════════ -->
+  <div id="section-reflection" class="section-panel">
+    <div class="section-eyebrow">Contemplative Space</div>
+    <h2 class="section-title">Guided Reflection</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">Before the closing, we pause. These final reflection prompts are drawn from the whole arc of this retreat. Take them slowly. There is no hurry.</p>
+
+    <!-- Listening Prayer -->
+    <div style="background:linear-gradient(135deg,var(--forest-dark),#0e1710);border-radius:12px;padding:2.5rem;margin:1.5rem 0;color:var(--warm-white);">
+      <div class="silence-label">Listening Prayer — A Three-Fold Offering</div>
+      <p style="font-family:var(--fell);font-style:italic;color:var(--gold-pale);line-height:2;margin-bottom:2rem;">Pray each question slowly. Then wait. Let God respond in whatever way He will — image, impulse, Scripture, stillness.</p>
+      
+      <div style="margin-bottom:1.5rem;padding:1.2rem;border-left:2px solid var(--gold);background:rgba(184,151,90,0.07);border-radius:0 8px 8px 0;">
+        <p style="font-family:var(--fell);font-style:italic;color:var(--gold-pale);font-size:1.1rem;margin:0;">"Lord, what do You want me to <em>notice</em>?" — (sit in silence)</p>
+      </div>
+      <div style="margin-bottom:1.5rem;padding:1.2rem;border-left:2px solid var(--gold);background:rgba(184,151,90,0.07);border-radius:0 8px 8px 0;">
+        <p style="font-family:var(--fell);font-style:italic;color:var(--gold-pale);font-size:1.1rem;margin:0;">"What in me needs <em>attention</em>?" — (sit in silence)</p>
+      </div>
+      <div style="padding:1.2rem;border-left:2px solid var(--gold);background:rgba(184,151,90,0.07);border-radius:0 8px 8px 0;">
+        <p style="font-family:var(--fell);font-style:italic;color:var(--gold-pale);font-size:1.1rem;margin:0;">"What <em>invitation</em> are You extending to me?" — (sit in silence)</p>
+      </div>
+    </div>
+
+    <!-- Silence Timer -->
+    <div class="silence-widget">
+      <div class="silence-label">Extended Silence</div>
+      <div class="silence-ring">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" id="silCircle3"/></svg>
+        <div class="silence-ring-inner">✦</div>
+      </div>
+      <div class="silence-time" id="silTime3">5:00</div>
+      <div class="duration-btns" style="margin-bottom:1rem;">
+        <button class="dur-btn" onclick="setDuration(3,180,'silTime3','silCircle3')">3 min</button>
+        <button class="dur-btn active" onclick="setDuration(3,300,'silTime3','silCircle3')">5 min</button>
+        <button class="dur-btn" onclick="setDuration(3,600,'silTime3','silCircle3')">10 min</button>
+      </div>
+      <div class="silence-controls">
+        <button class="silence-btn" onclick="startTimer(3,'silTime3','silCircle3','silBtn3')">Begin</button>
+        <button class="silence-btn" onclick="resetTimer(3,'silTime3','silCircle3','silBtn3',300)" id="silBtn3-r" style="display:none;">Reset</button>
+      </div>
+    </div>
+
+    <!-- Three Integration Questions -->
+    <div style="margin:2rem 0;">
+      <h3 style="font-size:1.5rem;color:var(--forest-dark);margin-bottom:1.5rem;">Three Questions for Integration</h3>
+
+      <div class="journal-area">
+        <div class="journal-label">Question 1</div>
+        <div class="journal-prompt">"What has God been saying to me through this retreat?"</div>
+        <textarea class="journal-textarea" id="j-ref1" placeholder="Let the whole arc of this retreat speak to you…" oninput="updateWordCount('j-ref1','wc-ref1')"></textarea>
+        <div class="journal-footer"><span class="word-count" id="wc-ref1">0 words</span><div class="journal-btns"><button class="btn-save" onclick="saveJournal('j-ref1','sr1')">Save</button></div></div>
+      </div>
+
+      <div class="journal-area">
+        <div class="journal-label">Question 2</div>
+        <div class="journal-prompt">"What one practice or posture do I want to carry forward from this retreat?"</div>
+        <textarea class="journal-textarea" id="j-ref2" placeholder="Name it concretely…" oninput="updateWordCount('j-ref2','wc-ref2')"></textarea>
+        <div class="journal-footer"><span class="word-count" id="wc-ref2">0 words</span><div class="journal-btns"><button class="btn-save" onclick="saveJournal('j-ref2','sr2')">Save</button></div></div>
+      </div>
+
+      <div class="journal-area">
+        <div class="journal-label">Question 3</div>
+        <div class="journal-prompt">"What area of my leadership most needs the gift of listening right now?"</div>
+        <textarea class="journal-textarea" id="j-ref3" placeholder="Be specific. Name the situation, the relationship, the decision…" oninput="updateWordCount('j-ref3','wc-ref3')"></textarea>
+        <div class="journal-footer"><span class="word-count" id="wc-ref3">0 words</span><div class="journal-btns">
+          <button class="btn-save" onclick="saveJournal('j-ref3','sr3')">Save</button>
+          <button class="btn-email" onclick="openEmailCombined(['j-ref1','j-ref2','j-ref3'],['What God Said','Practice to Carry Forward','Area Needing Listening'],'Guided Reflection — Integration')">✉ Email All Three</button>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('journal')">Open Full Journaling Space →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 09 JOURNALING SPACE ══════════════ -->
+  <div id="section-journal" class="section-panel">
+    <div class="section-eyebrow">Sacred Space</div>
+    <h2 class="section-title">Journaling Space</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">This is your open space — unstructured, unhurried. Write freely. You may use the prompts below, or simply write whatever God seems to be stirring in you.</p>
+
+    <div class="journal-main-card">
+      <div class="journal-main-title">My Retreat Journal</div>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-family:var(--sans);">Your words are saved automatically in your browser. Nothing is sent anywhere unless you choose to email it.</p>
+
+      <div class="journal-tabs">
+        <button class="jtab active" onclick="switchJTab(this,'jt1')">Free Writing</button>
+        <button class="jtab" onclick="switchJTab(this,'jt2')">Prompts</button>
+        <button class="jtab" onclick="switchJTab(this,'jt3')">Prayer</button>
+        <button class="jtab" onclick="switchJTab(this,'jt4')">Commitments</button>
+      </div>
+
+      <div class="jtab-panel active" id="jt1">
+        <textarea class="journal-textarea" id="j-free" style="min-height:280px;" placeholder="Write freely… let the Spirit lead your pen." oninput="updateWordCount('j-free','wc-free');autoSave('j-free')"></textarea>
+        <div class="journal-footer">
+          <span class="word-count" id="wc-free">0 words</span>
+          <div class="journal-btns">
+            <button class="btn-save" onclick="saveJournal('j-free','sf1')">Save</button>
+            <button class="btn-email" onclick="openEmail('j-free','My Retreat Journal — Free Writing')">✉ Email My Journal</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="jtab-panel" id="jt2">
+        <div style="margin-bottom:1.5rem;">
+          <p style="font-family:var(--fell);font-style:italic;color:var(--text-mid);margin-bottom:1rem;">Choose a prompt and write from it:</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;" id="promptBtns">
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(0)">Where have I sensed God recently?</button>
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(1)">What am I afraid of in silence?</button>
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(2)">What would it mean to truly listen?</button>
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(3)">What is God's invitation to me today?</button>
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(4)">Where am I leading from fear?</button>
+            <button class="tag" style="cursor:pointer;" onclick="setPrompt(5)">What does belovedness feel like right now?</button>
+          </div>
+          <div class="journal-prompt" id="activePrompt" style="display:none;margin-bottom:1rem;"></div>
+        </div>
+        <textarea class="journal-textarea" id="j-prompted" style="min-height:240px;" placeholder="Select a prompt above, then write…" oninput="updateWordCount('j-prompted','wc-prompted');autoSave('j-prompted')"></textarea>
+        <div class="journal-footer">
+          <span class="word-count" id="wc-prompted">0 words</span>
+          <div class="journal-btns">
+            <button class="btn-save" onclick="saveJournal('j-prompted','sp1')">Save</button>
+            <button class="btn-email" onclick="openEmail('j-prompted','My Retreat Journal — Prompted Writing')">✉ Email</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="jtab-panel" id="jt3">
+        <p style="font-family:var(--fell);font-style:italic;color:var(--text-mid);margin-bottom:1rem;">Write a prayer — to God, from you, exactly as you are.</p>
+        <textarea class="journal-textarea" id="j-prayer" style="min-height:240px;" placeholder="Dear God…" oninput="updateWordCount('j-prayer','wc-prayer');autoSave('j-prayer')"></textarea>
+        <div class="journal-footer">
+          <span class="word-count" id="wc-prayer">0 words</span>
+          <div class="journal-btns">
+            <button class="btn-save" onclick="saveJournal('j-prayer','sp2')">Save</button>
+            <button class="btn-email" onclick="openEmail('j-prayer','My Prayer — Retreat Journal')">✉ Email</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="jtab-panel" id="jt4">
+        <p style="font-family:var(--fell);font-style:italic;color:var(--text-mid);margin-bottom:1rem;">What 1–2 practices are you committing to carry forward from this retreat?</p>
+        <div style="display:flex;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:var(--sans);font-size:0.88rem;color:var(--text-mid);">
+            <input type="checkbox" id="c1" style="accent-color:var(--forest);"> Daily Examen (10 min)
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:var(--sans);font-size:0.88rem;color:var(--text-mid);">
+            <input type="checkbox" id="c2" style="accent-color:var(--forest);"> Weekly Listening Walk
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:var(--sans);font-size:0.88rem;color:var(--text-mid);">
+            <input type="checkbox" id="c3" style="accent-color:var(--forest);"> Silence before major decisions
+          </label>
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:var(--sans);font-size:0.88rem;color:var(--text-mid);">
+            <input type="checkbox" id="c4" style="accent-color:var(--forest);"> Daily breath prayer
+          </label>
+        </div>
+        <textarea class="journal-textarea" id="j-commit" style="min-height:180px;" placeholder="Describe your commitment more fully — when, how, with whom…" oninput="updateWordCount('j-commit','wc-commit');autoSave('j-commit')"></textarea>
+        <div class="journal-footer">
+          <span class="word-count" id="wc-commit">0 words</span>
+          <div class="journal-btns">
+            <button class="btn-save" onclick="saveJournal('j-commit','sc1')">Save</button>
+            <button class="btn-email" onclick="openEmail('j-commit','My Commitments — Listening Retreat')">✉ Email My Commitments</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="text-center">
+      <button class="btn-primary" onclick="showTab('closing')">Proceed to Closing Prayer →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ 10 CLOSING PRAYER ══════════════ -->
+  <div id="section-closing" class="section-panel">
+    <div class="section-eyebrow">Closing</div>
+    <h2 class="section-title">Closing Prayer</h2>
+    <div class="section-divider"></div>
+
+    <p class="section-intro">We end where we began — in the presence of God. Not with answers, but with attentiveness. Not with certainty, but with surrender.</p>
+
+    <div class="prayer-section" style="border-radius:12px;margin:1.5rem 0;">
+      <h2>The Sending Blessing</h2>
+      <div class="prayer-text">
+        <p>"May you become leaders who do not merely speak about God,</p>
+        <p>but who walk attentively with Him.</p>
+        <p>May you recognize His presence in silence,</p>
+        <p>in struggle,</p>
+        <p>in emotion,</p>
+        <p>and in the ordinary moments of life."</p>
+        <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--gold);font-style:normal;font-family:var(--sans);letter-spacing:0.06em;">— DMin Retreat Blessing</p>
+      </div>
+    </div>
+
+    <div class="scripture" style="margin:2rem 0;">
+      "Be still, and know that I am God."
+      <cite>Psalm 46:10</cite>
+    </div>
+
+    <!-- Final Silence -->
+    <div class="silence-widget" style="margin:1.5rem 0;">
+      <div class="silence-label">A Final Moment of Stillness</div>
+      <div class="silence-ring">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" id="silCircle4"/></svg>
+        <div class="silence-ring-inner">🕯️</div>
+      </div>
+      <div class="silence-time" id="silTime4">3:00</div>
+      <div class="duration-btns" style="margin-bottom:1rem;">
+        <button class="dur-btn active" onclick="setDuration(4,180,'silTime4','silCircle4')">3 min</button>
+        <button class="dur-btn" onclick="setDuration(4,300,'silTime4','silCircle4')">5 min</button>
+      </div>
+      <div class="silence-controls">
+        <button class="silence-btn" onclick="startTimer(4,'silTime4','silCircle4','silBtn4')">Begin Final Silence</button>
+        <button class="silence-btn" onclick="resetTimer(4,'silTime4','silCircle4','silBtn4',180)" id="silBtn4-r" style="display:none;">Reset</button>
+      </div>
+    </div>
+
+    <!-- Practices -->
+    <div class="teaching-block" style="margin:2rem 0;">
+      <h3>Optional Practices for the Month Ahead</h3>
+      <div class="practice-card" style="margin-top:1rem;">
+        <div class="practice-icon">🌙</div>
+        <div>
+          <h3>The Daily Examen</h3>
+          <p>10 minutes before bed. Five movements: gratitude, review, emotions, discernment, prayer. Begin with just one week. Let it become a rhythm.</p>
+        </div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🚶</div>
+        <div>
+          <h3>A Weekly Listening Walk</h3>
+          <p>Once a week, no phone, no podcast. Just you and God and the world He made. Walk attentively. Notice what you notice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email All -->
+    <div style="background:linear-gradient(135deg,#f0ebe0,#faf6ee);border-radius:10px;padding:2rem;text-align:center;border:1px solid rgba(184,151,90,0.2);">
+      <h3 style="font-size:1.5rem;color:var(--forest-dark);margin-bottom:0.5rem;">Send Yourself Your Retreat Journal</h3>
+      <p style="color:var(--text-muted);font-family:var(--sans);font-size:0.9rem;margin-bottom:1.5rem;">Compile all your reflections and send them to your email as a record of this retreat.</p>
+      <button class="btn-primary" onclick="emailAllReflections()">✉ Email All My Reflections</button>
+    </div>
+
+    <div class="ornament" style="margin-top:3rem;">✦ ✦ ✦</div>
+    <div style="text-align:center;margin-top:2rem;padding-bottom:2rem;">
+      <div style="font-family:var(--fell);font-style:italic;font-size:1.2rem;color:var(--text-mid);">"Speak, Lord, for your servant is listening."</div>
+      <div style="font-family:var(--sans);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-top:0.8rem;">1 Samuel 3:10</div>
+    </div>
+  </div>
+
+</div><!-- end #content -->
+
+<!-- ============================================================
+     EMAIL MODAL
+============================================================ -->
+<div class="modal-overlay" id="emailModal">
+  <div class="modal">
+    <h3>Email My Reflection</h3>
+    <p class="modal-sub">Send your reflection to yourself or a spiritual director.</p>
+    <div class="form-group">
+      <label>To Email Address</label>
+      <input type="email" id="emailTo" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>Subject</label>
+      <input type="text" id="emailSubject" value="My Retreat Reflection — Listening to God">
+    </div>
+    <div class="form-group">
+      <label>Your Reflection</label>
+      <textarea id="emailBody" rows="8"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeEmail()">Cancel</button>
+      <button class="btn-modal-send" onclick="sendEmail()">Send via Email ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- Save Toast -->
+<div class="save-toast" id="saveToast">✦ Saved to your browser</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+// ─── State ───────────────────────────────────────────────────
+var timers = {};
+var timerDurations = { 1:120, 2:180, 3:300, 4:180 };
+var breathInterval = null;
+var breathRunning = false;
+var currentExamenStep = 0;
+var currentEmailTarget = null;
+
+var reflectionPrompts = [
+  "Where have I sensed God recently?",
+  "What am I afraid of in silence?",
+  "What would it mean to truly listen?",
+  "What is God's invitation to me today?",
+  "Where am I leading from fear?",
+  "What does belovedness feel like right now?"
+];
+
+var emotionResponses = {
+  peace:    { label:"You sense peace", text:"Peace is a gift of the Spirit. Let it deepen. Ask: 'What is God communicating through this peace?'" },
+  tired:    { label:"You are tired", text:"Your tiredness is holy data. It may be an invitation to rest — not just in body, but in spirit. Lay it before God." },
+  anxious:  { label:"You feel anxious", text:"Anxiety is not the enemy — it is a messenger. Ask: 'What is beneath this anxiety? What am I afraid to trust God with?'" },
+  hopeful:  { label:"You feel hopeful", text:"Hope is a theological virtue, not wishful thinking. Receive this as a grace, and notice its source." },
+  grieving: { label:"You are grieving", text:"Grief is love with nowhere to go. The psalms invite lament. Let yourself mourn honestly before God." },
+  grateful: { label:"You feel grateful", text:"Gratitude opens the soul to God. Let this be your posture for this retreat hour." },
+  numb:     { label:"You feel numb", text:"Numbness often means something is protected. Gently ask God: 'What am I holding that I need to release?' There is no rush." },
+  joy:      { label:"You sense joy", text:"Joy is deeper than happiness — it coexists with hardship. Let this joy be a window into God's presence." },
+  confused: { label:"You feel confused", text:"Confusion can be the beginning of discernment. When we stop pretending to be certain, God often speaks. Stay in the question." },
+  longing:  { label:"You feel longing", text:"Longing is a profound spiritual faculty. Augustine said our hearts are restless until they rest in God. Offer this longing as prayer." },
+  burdened: { label:"You feel burdened", text:"'Cast your burden on the Lord, and He will sustain you' (Psalm 55:22). Name the burden. Offer it. You do not have to carry it alone." },
+  open:     { label:"You feel open", text:"Openness is a gift. A receptive soul is one that can be shaped, filled, and redirected. Receive this retreat with open hands." }
+};
+
+// ─── Navigation ──────────────────────────────────────────────
+function enterRetreat() {
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('tabs-bar').style.display = 'block';
+  document.getElementById('content').style.display = 'block';
+  showTab('welcome');
+  window.scrollTo(0,0);
+}
+
+function goHero() {
+  document.getElementById('hero').style.display = 'flex';
+  document.getElementById('tabs-bar').style.display = 'none';
+  document.getElementById('content').style.display = 'none';
+  closeMobileNav();
+  window.scrollTo(0,0);
+}
+
+function showTab(id) {
+  // hide all panels
+  var panels = document.querySelectorAll('.section-panel');
+  for (var i=0; i<panels.length; i++) {
+    panels[i].classList.remove('active');
+  }
+  // show target
+  var el = document.getElementById('section-'+id);
+  if (el) el.classList.add('active');
+
+  // update tab buttons
+  var tabs = document.querySelectorAll('.tab-btn');
+  for (var t=0; t<tabs.length; t++) {
+    tabs[t].classList.remove('active');
+  }
+  var activeTab = document.getElementById('tab-'+id);
+  if (activeTab) activeTab.classList.add('active');
+
+  // update nav buttons
+  var navBtns = document.querySelectorAll('.nav-btn');
+  for (var n=0; n<navBtns.length; n++) {
+    navBtns[n].classList.remove('active');
+  }
+
+  closeMobileNav();
+  window.scrollTo(0,58);
+  loadSavedJournals();
+}
+
+function toggleMobileNav() {
+  var nav = document.getElementById('mobile-nav');
+  nav.classList.toggle('open');
+}
+
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+// ─── Collapsibles ─────────────────────────────────────────────
+function toggleCollapsible(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// ─── Breath Prayer ────────────────────────────────────────────
+function startBreath() {
+  if (breathRunning) {
+    clearInterval(breathInterval);
+    breathRunning = false;
+    document.getElementById('breathBtn').textContent = 'Begin Breath Prayer';
+    document.getElementById('breathCircle').classList.remove('inhale','exhale');
+    return;
+  }
+  breathRunning = true;
+  document.getElementById('breathBtn').textContent = 'Pause';
+  var phase = 0;
+  var phases = [
+    { cls:'inhale', word:'Inhale', phrase:'Speak, Lord…', sub:'', dur:4000 },
+    { cls:'', word:'Hold',   phrase:'Speak, Lord…', sub:'', dur:2000 },
+    { cls:'exhale', word:'Exhale', phrase:'Your servant is listening…', sub:'', dur:5000 },
+    { cls:'', word:'Rest',   phrase:'', sub:'', dur:2000 }
+  ];
+  function cycle() {
+    var p = phases[phase % phases.length];
+    var circle = document.getElementById('breathCircle');
+    circle.className = 'breath-circle' + (p.cls ? ' '+p.cls : '');
+    document.getElementById('breathWord').textContent = p.word;
+    document.getElementById('breathPhrase').textContent = p.phrase;
+    phase++;
+  }
+  cycle();
+  breathInterval = setInterval(cycle, 4000);
+}
+
+// ─── Silence Timer ────────────────────────────────────────────
+function setDuration(id, secs, timeId, circleId) {
+  timerDurations[id] = secs;
+  clearInterval(timers[id]);
+  var m = Math.floor(secs/60);
+  var s = secs % 60;
+  document.getElementById(timeId).textContent = m + ':' + (s<10?'0':'')+s;
+  var c = document.getElementById(circleId);
+  if (c) c.style.strokeDashoffset = 283;
+  // update active btn
+  var row = document.getElementById(circleId).closest('.silence-widget');
+  if (row) {
+    var btns = row.querySelectorAll('.dur-btn');
+    for (var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+    event.target.classList.add('active');
+  }
+}
+
+function startTimer(id, timeId, circleId, btnId) {
+  if (timers[id]) { clearInterval(timers[id]); }
+  var total = timerDurations[id] || 120;
+  var remaining = total;
+  var circumference = 283;
+  var circle = document.getElementById(circleId);
+
+  document.getElementById(btnId+'-r') && (document.getElementById(btnId+'-r').style.display='inline-flex');
+
+  function tick() {
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(timers[id]);
+      document.getElementById(timeId).textContent = '✦ Amen';
+      if (circle) circle.style.strokeDashoffset = 0;
+      return;
+    }
+    var m = Math.floor(remaining/60);
+    var s = remaining % 60;
+    document.getElementById(timeId).textContent = m + ':' + (s<10?'0':'')+s;
+    if (circle) {
+      var offset = circumference - (circumference * (total - remaining) / total);
+      circle.style.strokeDashoffset = offset;
+    }
+  }
+  timers[id] = setInterval(tick, 1000);
+}
+
+function resetTimer(id, timeId, circleId, btnId, secs) {
+  clearInterval(timers[id]);
+  timerDurations[id] = secs;
+  var m = Math.floor(secs/60);
+  var s = secs % 60;
+  document.getElementById(timeId).textContent = m+':'+(s<10?'0':'')+s;
+  var c = document.getElementById(circleId);
+  if (c) c.style.strokeDashoffset = 283;
+}
+
+// ─── Emotional Check-in ───────────────────────────────────────
+function selectEmotion(el, key) {
+  var chips = document.querySelectorAll('.emotion-chip');
+  for (var i=0;i<chips.length;i++) chips[i].classList.remove('selected');
+  el.classList.add('selected');
+  var r = emotionResponses[key];
+  if (r) {
+    document.getElementById('emotionLabel').textContent = r.label;
+    document.getElementById('emotionText').textContent = r.text;
+    var resp = document.getElementById('emotionResponse');
+    resp.classList.add('show');
+  }
+}
+
+// ─── Examen ───────────────────────────────────────────────────
+function examenNext(step) {
+  document.getElementById('ex'+step).classList.remove('active');
+  document.getElementById('ep'+step) && document.getElementById('ep'+step).classList.replace ? 
+    '' : updateExamenProgress(step,'done');
+  updateExamenProgress(step,'done');
+  currentExamenStep = step+1;
+  if (step+1 < 5) {
+    document.getElementById('ex'+(step+1)).classList.add('active');
+    updateExamenProgress(step+1,'current');
+  } else {
+    document.getElementById('ex-complete').classList.add('active');
+    markAllExamenDots();
+  }
+}
+
+function examenPrev(step) {
+  document.getElementById('ex'+step).classList.remove('active');
+  document.getElementById('ex'+(step-1)).classList.add('active');
+  updateExamenProgress(step,'');
+}
+
+function updateExamenProgress(step, state) {
+  var dot = document.getElementById('ep'+step);
+  if (!dot) return;
+  dot.className = 'examen-dot' + (state ? ' '+state : '');
+}
+
+function markAllExamenDots() {
+  for (var i=0;i<5;i++) updateExamenProgress(i,'done');
+}
+
+function resetExamen() {
+  for (var i=0;i<5;i++) {
+    var s = document.getElementById('ex'+i);
+    if (s) s.classList.remove('active');
+    updateExamenProgress(i,'');
+  }
+  document.getElementById('ex-complete').classList.remove('active');
+  document.getElementById('ex0').classList.add('active');
+  updateExamenProgress(0,'current');
+  currentExamenStep = 0;
+}
+
+function emailExamen() {
+  var parts = [];
+  var labels = ['Gratitude','Review the Day','Emotions','God\'s Invitations','Prayer'];
+  for (var i=0;i<5;i++) {
+    var val = (document.getElementById('ex-j'+i)||{}).value || '';
+    if (val.trim()) parts.push('═ Movement '+(i+1)+': '+labels[i]+' ═\n'+val);
+  }
+  openEmailWithBody('Daily Examen — Retreat Journal', parts.join('\n\n'));
+}
+
+// ─── Journal ─────────────────────────────────────────────────
+function updateWordCount(textareaId, countId) {
+  var el = document.getElementById(textareaId);
+  var cnt = document.getElementById(countId);
+  if (!el || !cnt) return;
+  var words = el.value.trim() ? el.value.trim().split(/\s+/).length : 0;
+  cnt.textContent = words + (words===1?' word':' words');
+}
+
+function autoSave(id) {
+  var el = document.getElementById(id);
+  if (el) localStorage.setItem('rlcc_retreat_'+id, el.value);
+}
+
+function saveJournal(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    localStorage.setItem('rlcc_retreat_'+id, el.value);
+    showToast();
+  }
+}
+
+function loadSavedJournals() {
+  var keys = Object.keys(localStorage);
+  for (var i=0;i<keys.length;i++) {
+    if (keys[i].indexOf('rlcc_retreat_') === 0) {
+      var id = keys[i].replace('rlcc_retreat_','');
+      var el = document.getElementById(id);
+      if (el && !el.value) {
+        el.value = localStorage.getItem(keys[i]);
+        var wcId = 'wc-'+id.replace('j-','');
+        updateWordCount(id, wcId);
+      }
+    }
+  }
+}
+
+function showToast() {
+  var t = document.getElementById('saveToast');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+
+// ─── Journal Tabs ─────────────────────────────────────────────
+function switchJTab(btn, panelId) {
+  var btns = document.querySelectorAll('.jtab');
+  for (var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  var panels = document.querySelectorAll('.jtab-panel');
+  for (var i=0;i<panels.length;i++) panels[i].classList.remove('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+function setPrompt(idx) {
+  var el = document.getElementById('activePrompt');
+  el.textContent = reflectionPrompts[idx];
+  el.style.display = 'block';
+  document.getElementById('j-prompted').placeholder = 'Responding to: '+reflectionPrompts[idx]+'\n\nWrite freely…';
+}
+
+// ─── Email ────────────────────────────────────────────────────
+function openEmail(textareaId, subject) {
+  var el = document.getElementById(textareaId);
+  var body = el ? el.value : '';
+  openEmailWithBody(subject, body);
+}
+
+function openEmailCombined(ids, labels, subject) {
+  var parts = [];
+  for (var i=0;i<ids.length;i++) {
+    var el = document.getElementById(ids[i]);
+    var val = el ? el.value.trim() : '';
+    if (val) parts.push('═ '+labels[i]+' ═\n'+val);
+  }
+  openEmailWithBody(subject, parts.join('\n\n'));
+}
+
+function openEmailWithBody(subject, body) {
+  document.getElementById('emailSubject').value = subject + ' — Listening to God Retreat';
+  document.getElementById('emailBody').value = body || '';
+  document.getElementById('emailTo').value = '';
+  document.getElementById('emailModal').classList.add('open');
+}
+
+function closeEmail() {
+  document.getElementById('emailModal').classList.remove('open');
+}
+
+function sendEmail() {
+  var to = document.getElementById('emailTo').value.trim();
+  var subject = document.getElementById('emailSubject').value;
+  var body = document.getElementById('emailBody').value;
+
+  if (!to) { alert('Please enter an email address.'); return; }
+
+  var header = 'LISTENING TO GOD\nShepherding the Shepherds — Session 2\nDMin Virtual Retreat\n\n' +
+               '════════════════════════════════\n\n';
+  var footer = '\n\n════════════════════════════════\n' +
+               '"Speak, Lord, for your servant is listening."\n— 1 Samuel 3:10';
+
+  var fullBody = header + body + footer;
+  var mailto = 'mailto:'+encodeURIComponent(to)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(fullBody);
+  window.location.href = mailto;
+  closeEmail();
+}
+
+function emailAllReflections() {
+  var sections = [
+    { id:'j-listening',   label:'Listening to God' },
+    { id:'j-leadership',  label:'Spiritual Leadership' },
+    { id:'j-obstacles',   label:'Obstacles to Listening' },
+    { id:'j-consolation', label:'Consolation' },
+    { id:'j-desolation',  label:'Desolation' },
+    { id:'j-discernment', label:'Discernment Practice' },
+    { id:'j-ref1',        label:'What God Said' },
+    { id:'j-ref2',        label:'Practice to Carry Forward' },
+    { id:'j-ref3',        label:'Area Needing Listening' },
+    { id:'j-free',        label:'Free Writing' },
+    { id:'j-prayer',      label:'Prayer' },
+    { id:'j-commit',      label:'Commitments' }
+  ];
+  var parts = [];
+  for (var i=0;i<sections.length;i++) {
+    var el = document.getElementById(sections[i].id);
+    var val = el ? el.value.trim() : '';
+    if (val) parts.push('═══ '+sections[i].label.toUpperCase()+' ═══\n\n'+val);
+  }
+  // Add examen
+  var examLabels = ['Gratitude','Review the Day','Emotions','God\'s Invitations','Prayer'];
+  var examParts = [];
+  for (var j=0;j<5;j++) {
+    var ee = document.getElementById('ex-j'+j);
+    if (ee && ee.value.trim()) examParts.push('Movement '+(j+1)+' – '+examLabels[j]+':\n'+ee.value.trim());
+  }
+  if (examParts.length) parts.push('═══ DAILY EXAMEN ═══\n\n'+examParts.join('\n\n'));
+
+  if (!parts.length) {
+    alert('No reflections found. Please write in at least one journal area first.');
+    return;
+  }
+  openEmailWithBody('My Complete Retreat Journal — Listening to God', parts.join('\n\n────────────────────────────────\n\n'));
+}
+
+// ─── Init ─────────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  loadSavedJournals();
+  // Set initial examen dot
+  updateExamenProgress(0,'current');
+  // Close modal on overlay click
+  document.getElementById('emailModal').addEventListener('click', function(e) {
+    if (e.target === this) closeEmail();
+  });
+});
+</script>
+
+</body>
+</html>
